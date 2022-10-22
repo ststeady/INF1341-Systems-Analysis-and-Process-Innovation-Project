@@ -1,8 +1,14 @@
-# Primary Data Analysis on $CO^{2}$ emission 
+# Primary Data Analysis on $CO^2$ emission 
 
 ## Introduction
 
-This is a program that contains several analytics function of the world's $CO^2$ emission data.
+Global warming has been a worldwide concern over the past decade, some have argued that the greenhouse gas emissions maybe the main cause of this situation, where Carbon Dioxide ($CO^2$) takes a great part of greenhouse gases.  
+his is a program that contains several analytics function of the world's $CO^2$ emission data.
+
+This dataset contains CO2 and GHG emissions for countries since 1750 until 2017.
+The source is OurWorldInData (https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions).
+
+
 
 ## Installation
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Global warming has been a worldwide concern over the past decade, some have argued that the greenhouse gas emissions maybe the main cause of this situation, where Carbon Dioxide ($CO^2$) takes a great part of greenhouse gases.  
+Global warming has been a worldwide concern over the past decade, some have argued that the greenhouse gas emissions may be the main cause of this situation, and Carbon Dioxide ($CO^2$) takes a great part of greenhouse gases. Therefore, this $CO^2$ emission data analysis is conducted in order to study some of the basic statistics, the program includes several functions that can help users explore summary statistics such as mean, maximum, minimum and standard deviation, the program provides a full report of all the countries' emission analysis, it also includes barplot which can visualize $CO^2$ emission over years within a conutry, in addition, the program has a customizable function feature which allows users  
 his is a program that contains several analytics function of the world's $CO^2$ emission data.
 
 This dataset contains CO2 and GHG emissions for countries since 1750 until 2017.

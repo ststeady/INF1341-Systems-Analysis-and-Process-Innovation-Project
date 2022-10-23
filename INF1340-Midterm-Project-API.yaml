@@ -1,0 +1,406 @@
+openapi: 3.1.0
+x-stoplight:
+  id: ixv6aghovkqx8
+info:
+  title: INF1340 Midterm Project API
+  version: '1.0'
+  description: 'This API documents all the function''s arguments, type of arguments, usage, as well as the response, the functions are from INF1340 Midterm Project, where the program studies the countries'' CO2 emission between 1750 and 2017 '
+  contact:
+    name: Junwei Shen
+    email: junwei.shen@mail.utoronto.ca
+servers:
+  - url: 'http://localhost:3000'
+    description: inf1340midtermprojectapi
+paths:
+  '/getdata/{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getdata()
+      tags: []
+      responses:
+        '201':
+          description: 'Returns a list of lists containing all the attributes of a country, the emission amount and emission data collection years'
+      operationId: getdata()
+      description: Get all data from country entered
+      parameters: []
+  '/getcode{country}':
+    get:
+      summary: getcode()
+      tags: []
+      responses:
+        '200':
+          description: Returns a string of the 3 letters code
+          headers: {}
+      operationId: get-getcode
+      description: Get the code of country entered
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+  '/getstartend{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getstartend()
+      tags: []
+      responses:
+        '200':
+          description: Returns a tuple of two strings of the starting and ending year of data collection
+      operationId: get-getstartend-country
+      description: Get the start and end year of data collection of country entered
+  '/getemission{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getemission()
+      tags: []
+      responses:
+        '200':
+          description: Returns a list of strings containing all the CO2 emission in tonnes
+      operationId: get-getemission-country
+      description: Get CO2 emission information of country entered
+  '/getavg{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getavg()
+      tags: []
+      responses:
+        '200':
+          description: Returns a float of the mean of the CO2 emission
+      operationId: get-getavg-country
+      description: Get the mean of CO2 emission over all years (with data collection) of country entered
+  '/getmax{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getmax()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns a tuple of a float and a string, the float represents maximum of the CO2 emission, the string represents the year of maximum CO2 emission'
+      operationId: get-getmax-country
+      description: Get the maximum of CO2 emission over all years (with data collection) of country entered
+  '/getmin{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getmin()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns a tuple of a float and a string, the float represents minimum of the CO2 emission, the string represents the year of minimum CO2 emission'
+      operationId: get-getmin-country
+      description: Get the minimum of CO2 emission over all years (with data collection) of country entered
+  '/getstd{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getstd()
+      tags: []
+      responses:
+        '200':
+          description: Returns a float of the standard deviation of the CO2 emission
+      operationId: get-getstd-country
+      description: Get the standard deviation of CO2 emission over all years (with data collection) of country entered
+  /getcountry:
+    get:
+      summary: getcountry()
+      tags: []
+      responses:
+        '200':
+          description: Returns a list of strings containing all the country names
+      operationId: get-getcountry
+      description: 'Get all the country names available in the data set, there are no parameters required'
+  /getallavg:
+    get:
+      summary: getallavg()
+      tags: []
+      responses:
+        '200':
+          description: Returns a list of floats containing mean of CO2 emission from all countries
+      operationId: get-getallavg()
+      description: 'Get all the countries'' mean CO2 emission from available data in the data set, there are no parameters required'
+    parameters: []
+  /getworlddict:
+    get:
+      summary: getworlddict()
+      tags: []
+      responses:
+        '200':
+          description: Returns a dictionary with key as country name and value as CO2 emission amount of the specific country
+      operationId: get-getworlddict
+      description: 'Get a dictionary of country names and CO2 emission mean, there are no parameters required'
+  '/report/{country}':
+    get:
+      summary: report()
+      tags: []
+      responses:
+        '200':
+          description: Returns a .txt file of all the basic statistics information
+      operationId: get-report
+      description: 'Generate a report of summary of basic statistics of country entered, that is, the mean, maximum, minimum and standard deviation of CO2 emission amount'
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+  /reportall:
+    get:
+      summary: reportall()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns a .txt file of all the basic statistics information of all countries, this function may take a bit longer to run due to the output file requires iterations over a huge amount of data'
+      operationId: get-reportall
+      description: 'Generate a report of summary of basic statistics of all countries, that is, the mean, maximum, minimum and standard deviation of CO2 emission amount, there are no parameters required'
+  '/getcountrybar{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+    get:
+      summary: getcountrybar()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns an external file including a bar plot of CO2 emission from 1950 to 2000 of country entered, the image can be saved using the saved bar from bottom left'
+      operationId: get-getcountrybar-country
+      description: 'Using the matplotlib interpreter, get a bar plot of CO2 emission from 1950 to 2000 of country entered'
+  '/whichbetter/{country1}/{country2}/{year}':
+    parameters:
+      - schema:
+          type: string
+        name: country1
+        in: path
+        required: true
+        description: first country name to make comparison
+      - schema:
+          type: string
+        name: country2
+        in: path
+        required: true
+        description: second country name to make comparison
+      - schema:
+          type: integer
+        name: year
+        in: path
+        required: true
+        description: year of making the comparison
+    get:
+      summary: whichcountrybetter()
+      tags: []
+      responses:
+        '200':
+          description: Returns a string including a sentence stating which country is doing better with what amount of CO2 emission and the year of this comparison
+      operationId: 'get-whichbetter-country1,-country2,-year'
+      description: 'Make the comparison of CO2 emission between two countries in the same year, the lesser the emission the better'
+  '/whichyearbetter/{year1}/{country}/{year2}':
+    parameters:
+      - schema:
+          type: integer
+        name: year1
+        in: path
+        required: true
+      - schema:
+          type: integer
+        name: year2
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+    get:
+      summary: whichyearbetter()
+      tags: []
+      responses:
+        '200':
+          description: Returns a string including a sentence stating which year is doing better with what amount of CO2 emission and the country of this comparison
+      operationId: get-whichyearbetter-year-1-year-2-country
+      description: 'Make the comparison of CO2 emission between two years in the same country, the lesser the emission the better'
+  '/getcustavg{country}/{start}/{end}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+      - schema:
+          type: string
+        name: start
+        in: path
+        required: true
+        description: required year of starting
+      - schema:
+          type: string
+        name: end
+        in: path
+        required: true
+        description: required year of ending
+    get:
+      summary: getcustavg()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns a string contains sentence stating the mean CO2 emission, input start and end years as well as the country of interest'
+      operationId: get-getcustavg-country-start-end
+      description: 'Present the mean of CO2 emission from user-entered start and end year, and country'
+  '/getcustmax{country}/{start}/{end}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+      - schema:
+          type: string
+        name: start
+        in: path
+        required: true
+        description: required year of starting
+      - schema:
+          type: string
+        name: end
+        in: path
+        required: true
+        description: required year of ending
+    get:
+      summary: getcustmax()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns a string contains sentence stating the maximum CO2 emission, input start and end years as well as the country of interest'
+      operationId: get-getcustmax-country-start-end
+      description: 'Present the maximum of CO2 emission from user-entered start and end year, and country'
+  '/getcustmin{country}/{start}/{end}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+      - schema:
+          type: string
+        name: start
+        in: path
+        required: true
+        description: required year of starting
+      - schema:
+          type: string
+        name: end
+        in: path
+        required: true
+        description: required year of ending
+    get:
+      summary: getcustmin()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns a string contains sentence stating the minimum CO2 emission, input start and end years as well as the country of interest'
+      operationId: get-getcustmin-country-start-end
+      description: 'Present the minimum of CO2 emission from user-entered start and end year, and country'
+  '/getcuststd{country}/{start}/{end}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+        description: the name of a country from the orginal .csv data file
+      - schema:
+          type: string
+        name: start
+        in: path
+        required: true
+        description: required year of starting
+      - schema:
+          type: string
+        name: end
+        in: path
+        required: true
+        description: required year of ending
+    get:
+      summary: getcuststd()
+      tags: []
+      responses:
+        '200':
+          description: 'Returns a string contains sentence stating the standard deviation of CO2 emission, input start and end years as well as the country of interest'
+      operationId: get-getcuststd-country-start-end
+      description: 'Present the standard deviation of CO2 emission from user-entered start and end year, and country'
+components:
+  schemas:
+    User:
+      title: Attributes
+      type: object
+      description: ''
+      examples:
+        - country: Canada
+          code: CDN
+          year: 2000
+          CO2 emission: 572530740
+      properties:
+        country:
+          type: string
+          description: Country name from the .csv file
+        code:
+          type: string
+          description: 3 letter country code
+        year:
+          type: integer
+          description: year of the data collection
+        CO2 emission:
+          type: number
+          description: CO2 emission amount in tonnes
+      required:
+        - country
+        - year
+        - CO2 emission

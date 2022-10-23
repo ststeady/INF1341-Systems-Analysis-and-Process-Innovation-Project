@@ -1,0 +1,4 @@
+The average CO2 emission of Canada is 136967905.04892704 between 1785 and 2017.
+Canada has a max value of 594140241.8 tonnes in year 2007, it has a min value of 3664.0 tonnes in year 1845. 
+The standard deviation for the CO2 emission of Canada is 192346646.40168205. 
+All data are collected from 1785 to 2017.
